@@ -14,7 +14,7 @@ hhb_d = null; //for document.
 hhb_all_loaded = false;
 hhb_init_ID = null;
 
-hhb_auto = false;
+hhb_auto = true;
 hhb_mehlist_on = true;
 hhb_wootlist_on = true;
 hhb_undecidedlist_on = false;
