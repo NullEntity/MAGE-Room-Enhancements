@@ -2,9 +2,9 @@
 // @name           plug.dj MAGE Room Enhancements
 // @namespace      Dis
 // @include        /^https?://(www\.)?plug\.dj/mage/.*$/
-// @version        2.2
-// @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
-// @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
+// @version        2.3
+// @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
+// @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
 // ==/UserScript==
 
 //plug enhanced
