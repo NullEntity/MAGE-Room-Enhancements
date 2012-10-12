@@ -4,7 +4,7 @@
 // @include        /^https?://(www\.)?plug\.dj/mage/$/
 // @version        1
 // @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
-// @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.uesr.js
+// @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
 // ==/UserScript==
 
 //Room
@@ -627,5 +627,5 @@ if (isBoris())
 javascript: (function () { 
 var jsCode = document.createElement('script'); 
 jsCode.setAttribute('id', 'plugbot-js'); 
-jsCode.setAttribute('src', 'https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.uesr.js'); 
+jsCode.setAttribute('src', 'https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js'); 
 document.body.appendChild(jsCode); }());
