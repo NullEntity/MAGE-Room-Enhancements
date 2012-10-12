@@ -94,7 +94,7 @@ function hhb_init() {
     }, false);
     document.getElementById('fb-root').parentNode.appendChild(hhb_d);
     /////////////////////////////END OF DRAGGABLE BOX////////////////////////////////////////////
-    //hhb_d.innerHTML += '<button id="hhb_autowoot_button" type="button" style="cursor:default;" >Auto-WOOT!: <span style=\'color:rgb(233,6,6);\'>Disabled</span>.</button>';
+    hhb_d.innerHTML += '<button id="hhb_autowoot_button" type="button" style="cursor:default;" >Auto-WOOT!: <span style=\'color:rgb(233,6,6);\'>Disabled</span>.</button>';
     hhb_d.innerHTML += '<form style="cursor:default;">' + '<input type="checkbox" id="hhb_mehlist_button" name="MEH-list" checked="checked" /> <span style="color:lime;">MEH-list</span> ' + '<input id="hhb_wootlist_button" type="checkbox" name="WOOT-list" checked="checked" /> <span style="color:lime;">WOOT!-list</span><br/>' + '<input id="hhb_undecidedlist_button" type="checkbox" name="Undecided-list" /><span style="color:lime;">Undecided-list</span>' + '</form>';
     hhb_d.innerHTML += '<span id="hhb_meanlist" style="cursor:default;"></span>';
     document.getElementById('hhb_mehlist_button').addEventListener('change', function () {
