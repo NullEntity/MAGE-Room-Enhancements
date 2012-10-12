@@ -110,18 +110,18 @@ function hhb_init() {
         hhb_meanlist();
     });
     //firefox 12 bug? add this code right below creation of the button, and this happens: document.getElementById('hhb_autowoot_button').addEventListener('mouseover',function(){alert("getElementById is returning the correct button object. this event is never activated. button exists, cus im looking right at it.");});
-    //document.getElementById('hhb_autowoot_button').addEventListener('click', function (e) {
-    //    hhb_auto = !hhb_auto;
-    //    var doc = document.getElementById('hhb_autowoot_button');
+    document.getElementById('hhb_autowoot_button').addEventListener('click', function (e) {
+        hhb_auto = !hhb_auto;
+        var doc = document.getElementById('hhb_autowoot_button');
         //To experience Inception, un-comment the line below, and play with the button :P  (click at it in the corners; at least it works in chrome)
         //		doc =e.target;
-    //    if (hhb_auto) {
-    //        doc.innerHTML = 'Auto-WOOT!: <span style=\'color:rgb(0,138,5);\'>Enabled</span>.';
-    //        hhb_autowoot();
-    //    } else {
-    //        doc.innerHTML = 'Auto-WOOT!: <span style=\'color:rgb(233,6,6);\'>Disabled</span>.';
-    //    }
-    //});
+        if (hhb_auto) {
+            doc.innerHTML = 'Auto-WOOT!: <span style=\'color:rgb(0,138,5);\'>Enabled</span>.';
+			hhb_autowoot();
+		} else {
+            doc.innerHTML = 'Auto-WOOT!: <span style=\'color:rgb(233,6,6);\'>Disabled</span>.';
+        }
+    });
     hhb_d = document.getElementById('hhb_meanlist');
     unsafeWindow.API.addEventListener(unsafeWindow.API.VOTE_UPDATE, hhb_meanlist);
     unsafeWindow.API.addEventListener(unsafeWindow.API.DJ_ADVANCE, hhb_wootandlist);
@@ -145,20 +145,20 @@ function hhb_removeElement(e) {
     }
 }
 
-//function hhb_autowoot() {
-//    if (!hhb_all_loaded) {
-//        return; /*not ready yet*/
-//    }
-//    if (typeof (unsafeWindow.API.getSelf().vote) !== 'undefined' && unsafeWindow.API.getSelf().vote != 0) { //Sometimes (in chrome at least) "vote" is undefined, and sometimes, its 0... -.- (told boycey/scallywag about it.)
-//        /*already decided.*/
-//        return;
-//    }
-//    if (hhb_auto == true) {
-//        var evt = document.createEvent("MouseEvents");
-//        evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); //<<simulate mouse click.
-//        document.getElementById("button-vote-positive").dispatchEvent(evt);
-//    }
-//}
+function hhb_autowoot() {
+    if (!hhb_all_loaded) {
+        return; /*not ready yet*/
+    }
+    if (typeof (unsafeWindow.API.getSelf().vote) !== 'undefined' && unsafeWindow.API.getSelf().vote != 0) { //Sometimes (in chrome at least) "vote" is undefined, and sometimes, its 0... -.- (told boycey/scallywag about it.)
+        /*already decided.*/
+        return;
+    }
+    if (hhb_auto == true) {
+        var evt = document.createEvent("MouseEvents");
+        evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); //<<simulate mouse click.
+        document.getElementById("button-vote-positive").dispatchEvent(evt);
+    }
+}
 
 
 
