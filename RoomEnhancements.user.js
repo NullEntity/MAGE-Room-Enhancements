@@ -2,7 +2,7 @@
 // @name           plug.dj MAGE Room Enhancements
 // @namespace      Dis
 // @include        /^https?://(www\.)?plug\.dj/mage/.*$/
-// @version        2.1
+// @version        2.2
 // @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
 // @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
 // ==/UserScript==
@@ -178,8 +178,8 @@ function hhb_meanlist() {
     var myid = unsafeWindow.API.getSelf().id
     for (i in a) { //thanks to... (forgot)someone for the pointers
         str = '<br/><span class="chat-message chat-from-clickable ';
-        ///{Omfg, some users dont have these properties (idk why), and it causes exceptions in my codes -.-
-        ///if (typeof (a[i].moderator) === 'undefined')
+        //{Omfg, some users dont have these properties (idk why), and it causes exceptions in my codes -.-
+        //if (typeof (a[i].moderator) === 'undefined')
         //a[i].moderator=false;
         //if(typeof(a[i].superuser)==='undefined')
         //a[i].superuser=false;
@@ -259,5 +259,5 @@ hhb_init_ID = setInterval(hhb_init, 4999);
 javascript: (function () { 
 var jsCode = document.createElement('script'); 
 jsCode.setAttribute('id', 'plugbot-js'); 
-jsCode.setAttribute('src', 'https://raw.github.com/Punkred/DnBplug/plug/plug.js'); 
+jsCode.setAttribute('src', 'https://github.com/NullEntity/MAGE-Room-Enhancements/raw/master/RoomEnhancements.user.js'); 
 document.body.appendChild(jsCode); }());
