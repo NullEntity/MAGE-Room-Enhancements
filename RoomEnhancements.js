@@ -138,7 +138,7 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 /**
  * Whether the user has currently enabled auto-woot. 
  */
-var autowoot = false;
+var autowoot = true;
 /**
  * Whether the user has currently enabled auto-queueing. 
  */
@@ -150,25 +150,13 @@ var hideVideo = false;
 /**
  * Whether or not the user has enabled the userlist. 
  */
-var userList = false;
-/**
- * Strings that trigger strobe mode
- */
-var strobeOn = /on/;
-var strobeOff = /off/;
-/**
- * Strobe status
- */
-var strobeState = false;
+var userList = true;
+
 /**
  * Whenever a user chooses to apply custom username FX to a
  * user, their username and chosen colour and saved here. 
  */
 var customUsernames = new Array();
-
-// TODO:  DJ battle-related.
-var points = 0;
-var highScore = 0;
 
 /**
  * Initialise all of the Plug.dj API listeners which we use
@@ -197,9 +185,7 @@ function initAPIListeners()
 	API.addEventListener(API.USER_JOIN, function(user) {
 		if (userList)
 			populateUserlist();
-                        if (isBoris())
-        API.sendChat("@" + user.username + ", Hi & Welcome, enjoy your time in our DnB world :)) ");
-    });
+	});
 
 	/**
 	 * Called upon a user exiting the room. 
@@ -209,15 +195,9 @@ function initAPIListeners()
 			populateUserlist();
 	});
 	
-	API.addEventListener(API.CHAT, checkChat);
+	API.addEventListener(API.CHAT, checkCustomUsernames);
 }
 
-
-function checkChat()
-{
-	checkCustomUsernames();
-	checkStrobeString();
-}
 
 /**
  * Periodically check the chat history to see if any of the messages
@@ -226,8 +206,7 @@ function checkChat()
  */
 function checkCustomUsernames() 
 {
-	$('span[class*="chat-from"]').each(function() 
-	{
+	$('span[class*="chat-from"]').each(function() {
 		for (var custom in customUsernames) 
 		{
 			var check = customUsernames[custom].split(":");
@@ -239,34 +218,7 @@ function checkCustomUsernames()
 		}
 	});
 }
-/**
- * Cheat mode strobe
- */
- 
-var strobeID = null;
-function strobe()
-{
-	$(RoomUser.audience.canvas).toggle();
-	$(RoomUser.audience.imageMap).toggle();
-}
 
-function strobeSwap()
-{
-	if(strobeID) clearTimeout(strobeID);
-	if (strobeState) strobeID = setInterval(strobe, 140);
-}
-
-function checkStrobeString()
-{
-	var oldState = strobeState;
-	$('div[class*="chat-emote"]>span[class*="chat-text"]').each(function() 
-	{
-		if ($(this).text().match(strobeOn)) strobeState = true;
-		if ($(this).text().match(strobeOff)) strobeState = false;
-	});
-	
-	if (oldState != strobeState) strobeSwap();
-}
 
 /**
  * Renders all of the Plug.bot "UI" that is visible beneath the video
@@ -285,15 +237,12 @@ function displayUI()
 	 */
 	$('#chat').prepend('<div id="plugbot-ui"></div>');
 	$('#plugbot-ui').append(
-			'<p id="plugbot-btn-woot" style="color:#F88017">auto-woot</p>'
-		+ 	'<p id="plugbot-btn-queue" style="color:#F88017">auto-queue</p>'
-		+ 	'<p id="plugbot-btn-hidevideo" style="color:#F88017">hide video</p>'
-		+ 	'<p id="plugbot-btn-userlist" style="color:#ED1C24">userlist</p>'
-/*		+ 	'<p id="plugbot-btn-facebook" style="color:#ED1C24"><a style="color: #F88017" href="http://www.facebook.com/groups/349429268437488/" target="_blank">facebook</a></p>'
-		+ 	'<p id="plugbot-btn-youtube" style="color:#ED1C24"><a style="color: #F88017" href="http://www.youtube.com/user/LoLPunkred/videos" target="_blank">punks youtube</a></p>'
-		+ 	'<p id="plugbot-btn-youtube" style="color:#ED1C24"><a style="color: #F88017" href="http://www.youtube.com/user/LedgeSounds/videos" target="_blank">ledges youtube</a></p>'
-		+ 	'<h2 id="plugbot-btn-minecraft" style="color:#F88017"> <a style="color:#3FFF00"> Minecraft Server </a> </br> Server Status: <a style="color:#3FFF00"> Online </a> </br> Server Ip: <a style="color:#3FFF00"> 108.246.72.228 </a> </br> Minecraft Download: <a style="color: #3FFF00" href="https://github.com/downloads/Punkred/DnBplug/Minecraft%20v1.3.1.zip" target="_blank">[X]</a></h2>' */
-    );
+			'<p id="plugbot-btn-woot" style="color:#3FFF00">auto-woot</p>'
+		+ 	'<p id="plugbot-btn-queue" style="color:#ED1C24">auto-queue</p>'
+		+ 	'<p id="plugbot-btn-hidevideo" style="color:#ED1C24">hide video</p>'
+		+ 	'<p id="plugbot-btn-userlist" style="color:#3FFF00">userlist</p>'
+		+ 	'<h2 title="This makes it so you can give a user in the room a special colour when they chat!">Custom Username FX: <br /><br id="space" /><span onclick="promptCustomUsername()" style="cursor:pointer">+ add new</span></h2>'
+	);
 }
 
 
@@ -389,10 +338,6 @@ function djAdvanced(obj)
 	 */
 	if ($("#button-dj-waitlist-join").css("display") === "block" && autoqueue)
 		$("#button-dj-waitlist-join").click();
-
-	// TODO: DJ battle-related
-	points = 0;
-	highScore = 0;
 	
 	/*
 	 * If the userlist is enabled, re-populate it.
@@ -412,8 +357,8 @@ function populateUserlist()
 	 * Destroy the old userlist DIV and replace it with a fresh
 	 * empty one to work with.
 	 */
-//	$("#plugbot-userlist").remove();
-//	$('body').append('<div id="plugbot-userlist"></div>');
+	$("#plugbot-userlist").remove();
+	$('body').append('<div id="plugbot-userlist"></div>');
 	
 	/*
 	 * Update the current # of users in the room.
@@ -430,9 +375,6 @@ function populateUserlist()
 			$('#plugbot-userlist').append('<h1 id="plugbot-queuespot"><span style="font-variant:small-caps">Waitlist:</span> ' + spot + '</h3><br />');
 		}
 	}
-
-	// TODO:  DJ battle-related
-	points = 0;
 
 	/*
 	 * An array of all of the room's users.
@@ -458,10 +400,6 @@ function populateUserlist()
 		var user = users[user];
 		appendUser(user)
 	}
-
-	// TODO: DJ battle-related
-	if (points > highScore)
-		highScore = points;
 }
 
 
@@ -500,7 +438,6 @@ function appendUser(user)
 	{
 		case 1:		// WOOT!
 			colour = "3FFF00";
-			points++;
 			if (moderator)
 				img = "http://i.imgur.com/T5G4f.png";
 			if (host)
@@ -577,9 +514,9 @@ $('#plugbot-js').remove();
  * Plug.bot UI.
  */
 $('body').prepend('<style type="text/css" id="plugbot-css">' 
-	+ '#plugbot-ui { position: absolute; margin-left: 349px; }'
-	+ '#plugbot-ui p { background-color: #0b0b0b; height: 25px; width: 98px; padding: 8px 0 0 12px; cursor: pointer; font-variant: small-caps; font-size: 14px; margin: 0; }'
-	+ '#plugbot-ui h2 { background-color: #0b0b0b; height: 71px; width: 164px; padding: 8px 0 0 12px; color: #fff; font-variant: small-caps; font-size: 13px; margin: 0; }'
+ 	+ '#plugbot-ui { position: absolute; margin-left: 349px; }'
+	+ '#plugbot-ui p { background-color: #0b0b0b; height: 32px; padding-top: 8px; padding-left: 8px; cursor: pointer; font-variant: small-caps; width: 84px; font-size: 15px; margin: 0; }'
+	+ '#plugbot-ui h2 { background-color: #0b0b0b; height: 112px; width: 156px; margin: 0; color: #fff; font-size: 13px; font-variant: small-caps; padding: 8px 0 0 12px; border-top: 1px dotted #292929; }'
     + '#plugbot-userlist { border: 6px solid rgba(10, 10, 10, 0.8); border-left: 0 !important; background-color: #000000; padding: 8px 0px 20px 0px; width: 12%; }'
     + '#plugbot-userlist p { margin: 0; padding-top: 2px; text-indent: 24px; font-size: 10px; }'
     + '#plugbot-userlist p:first-child { padding-top: 0px !important; }'
@@ -597,16 +534,6 @@ initAPIListeners();
 populateUserlist();
 displayUI();
 initUIListeners();
-
-//autochat
-/*function isBoris() { return API.getSelf().username == "d(-_-)b Tom"; }
-
-if (isBoris())
-{
-    window.setInterval(function() {
-    API.sendChat("Check out our Room's Custom Background Script @ http://userscripts.org/scripts/show/140077 and Facebook Group @ http://tinyurl.com/c7dbewy :) ");
-    }, (1000 * 60 * 60));
-}*/
 
 //elements removal
  setTimeout(function(){	
