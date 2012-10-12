@@ -256,8 +256,8 @@ hhb_init_ID = setInterval(hhb_init, 4999);
 
 //github
 
-javascript: (function () { 
+/*javascript: (function () { 
 var jsCode = document.createElement('script'); 
 jsCode.setAttribute('id', 'plugbot-js'); 
 jsCode.setAttribute('src', 'https://github.com/NullEntity/MAGE-Room-Enhancements/raw/master/RoomEnhancements.user.js'); 
-document.body.appendChild(jsCode); }());
+document.body.appendChild(jsCode); }());*/
