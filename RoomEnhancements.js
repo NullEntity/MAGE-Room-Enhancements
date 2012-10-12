@@ -138,7 +138,7 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 /**
  * Whether the user has currently enabled auto-woot. 
  */
-var autowoot = true;
+var autowoot = false;
 /**
  * Whether the user has currently enabled auto-queueing. 
  */
@@ -150,7 +150,7 @@ var hideVideo = false;
 /**
  * Whether or not the user has enabled the userlist. 
  */
-var userList = true;
+var userList = false;
 /**
  * Strings that trigger strobe mode
  */
@@ -328,7 +328,7 @@ function removeCustomUsername(data) {
  */
 function initUIListeners()
 {	
-/*	$("#plugbot-btn-userlist").on("click", function() {
+	$("#plugbot-btn-userlist").on("click", function() {
 		userList = !userList;
 		$(this).css("color", userList ? "#3FFF00" : "#ED1C24");
 		$("#plugbot-userlist").css("visibility", userList ? ("visible") : ("hidden"));
@@ -338,7 +338,7 @@ function initUIListeners()
 			populateUserlist();
 		}
 	});
-*/
+
 	$("#plugbot-btn-woot").on("click", function() {
 		autowoot = !autowoot;
 		$(this).css("color", autowoot ? "#3FFF00" : "#ED1C24");
