@@ -3,8 +3,8 @@
 // @namespace      Dis
 // @include        /^https?://(www\.)?plug\.dj/mage/.*$/
 // @version        2.1
-// @updateURL      https://raw.github.com/Punkred/DnBplug/plug/plug.js
-// @downloadURL    https://raw.github.com/Punkred/DnBplug/plug/plug.js
+// @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
+// @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.js
 // ==/UserScript==
 
 //plug enhanced
