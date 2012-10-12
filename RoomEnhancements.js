@@ -138,7 +138,7 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
 /**
  * Whether the user has currently enabled auto-woot. 
  */
-var autowoot = false;
+var autowoot = true;
 /**
  * Whether the user has currently enabled auto-queueing. 
  */
@@ -150,7 +150,7 @@ var hideVideo = false;
 /**
  * Whether or not the user has enabled the userlist. 
  */
-var userList = false;
+var userList = true;
 /**
  * Strings that trigger strobe mode
  */
@@ -288,8 +288,8 @@ function displayUI()
 			'<p id="plugbot-btn-woot" style="color:#F88017">auto-woot</p>'
 		+ 	'<p id="plugbot-btn-queue" style="color:#F88017">auto-queue</p>'
 		+ 	'<p id="plugbot-btn-hidevideo" style="color:#F88017">hide video</p>'
-/*		+ 	'<p id="plugbot-btn-userlist" style="color:#ED1C24">userlist</p>'
-		+ 	'<p id="plugbot-btn-facebook" style="color:#ED1C24"><a style="color: #F88017" href="http://www.facebook.com/groups/349429268437488/" target="_blank">facebook</a></p>'
+		+ 	'<p id="plugbot-btn-userlist" style="color:#ED1C24">userlist</p>'
+/*		+ 	'<p id="plugbot-btn-facebook" style="color:#ED1C24"><a style="color: #F88017" href="http://www.facebook.com/groups/349429268437488/" target="_blank">facebook</a></p>'
 		+ 	'<p id="plugbot-btn-youtube" style="color:#ED1C24"><a style="color: #F88017" href="http://www.youtube.com/user/LoLPunkred/videos" target="_blank">punks youtube</a></p>'
 		+ 	'<p id="plugbot-btn-youtube" style="color:#ED1C24"><a style="color: #F88017" href="http://www.youtube.com/user/LedgeSounds/videos" target="_blank">ledges youtube</a></p>'
 		+ 	'<h2 id="plugbot-btn-minecraft" style="color:#F88017"> <a style="color:#3FFF00"> Minecraft Server </a> </br> Server Status: <a style="color:#3FFF00"> Online </a> </br> Server Ip: <a style="color:#3FFF00"> 108.246.72.228 </a> </br> Minecraft Download: <a style="color: #3FFF00" href="https://github.com/downloads/Punkred/DnBplug/Minecraft%20v1.3.1.zip" target="_blank">[X]</a></h2>' */
