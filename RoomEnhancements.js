@@ -426,9 +426,9 @@ function appendUser(user)
 	 */
 	var colour;
 	var currentDj = false;
-	var moderator = user.permission >= 2;
-	if (API.getSuperUsers() != null) 	var su = user.permission >= 3;
-	if (API.getHost() != null) 		var host = user.permission >= 4;
+	var moderator	= user.permission >= 2;
+	var su		= user.permission >= 3;
+	var host	= user.permission >= 4;
 	var img;
 
 	/*
