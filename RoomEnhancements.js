@@ -131,7 +131,7 @@ for(var i=0,l=texts.snapshotLength; (this_text=texts.snapshotItem(i)); i++) {
  * NOTE:  This is all procedural as hell because prototypes and any 
  * 			OOP techniques in Javascript are stupid and confusing.
  * 
- * @author 	Conner Davis ([VIP] ?Logïç®) 
+ * @author 	Conner Davis ([VIP] ?Logï¿½ï¿½ï¿½) 
  * 			Harrison Schneidman ([VIDJ] EX?)
  */
 
@@ -417,7 +417,7 @@ function populateUserlist()
 function appendUser(user) 
 {
 	var username 	= user.username;
-	var vote 		= user.vote;
+	var vote 	= user.vote;
 	
 	/*
 	 * Some variables that we'll either be setting as true/false
@@ -426,9 +426,9 @@ function appendUser(user)
 	 */
 	var colour;
 	var currentDj = false;
-	var moderator = user.moderator;
-	if (API.getSuperUsers() != null) 	var su = user.superuser;
-	if (API.getHost() != null) 			var host = user.owner;
+	var moderator = user.permission >= 2;
+	if (API.getSuperUsers() != null) 	var su = user.permission >= 3;
+	if (API.getHost() != null) 		var host = user.permission >= 4;
 	var img;
 
 	/*
