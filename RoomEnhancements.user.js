@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           plug.dj MAGE Room Enhancements
 // @namespace      Dis
-// @include        /^https?://(www\.)?plug\.dj/(mage|electronic-elementz-1|lifepunch)/$/
+// @include        /^https?://(www\.)?plug\.dj/(mage|gmodlp|lifepunch)/$/
 // @version        1.0.1
 // @updateURL      https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
 // @downloadURL    https://raw.github.com/NullEntity/MAGE-Room-Enhancements/master/RoomEnhancements.user.js
